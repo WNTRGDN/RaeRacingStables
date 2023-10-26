@@ -1,5 +1,5 @@
 .wntrSplitBlock {
-    overflow: scroll;
+    overflow-x: hidden;
     margin-bottom: calc(var(--gutter) * 2);
     &__col {
         background-color: var(--primary-color);

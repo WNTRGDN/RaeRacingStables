@@ -58,7 +58,7 @@
         height: calc(var(--gutter) * 4);
         width: calc(var(--gutter) * 4);
         background-color: var(--dark-color-alpha);
-        position: absolute;
+        position: fixed;
         bottom: calc(var(--gutter) * 2);
         right: calc(var(--gutter) * 2);
         cursor: pointer;

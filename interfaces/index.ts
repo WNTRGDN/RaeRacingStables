@@ -6,8 +6,49 @@ export interface IWebsite {
     menus: IMenu[];
     settings: ISettings;
     socials: ISocials;
+    form: IForm;
     createDate: Date;
     updateDate: Date;
+}
+
+export interface IForm {
+    id: string,
+    name: string,
+    fields: IField[],
+    messageOnSubmit: string,
+    nextLabel: string,
+    prevLabel: string,
+    submitLabel: string,
+    fieldTypes: Record<string, string>
+}
+
+export interface IField {
+    alias: string,
+    allowMultipleFileUploads: boolean,
+    allowedUploadTypes: object,
+    caption: string,
+    containsSensitiveData: boolean,
+    cssClass: string,
+    fieldTypeId: string,
+    fieldType: string,
+    id: string,
+    invalidErrorMessage: string,
+    mandatory: boolean,
+    placeholder: string,
+    regEx: string,
+    requiredErrorMessage: string,
+    settings: IFormFieldSettings,
+    submitting: boolean
+}
+
+export interface IFormFieldSettings {
+    autocompleteAttribute: string,
+    defaultValue: string,
+    fieldType: string,
+    maximumLength: string,
+    numberOfRows: number,
+    placeholder: string,
+    showLabel: string
 }
 
 export interface ISocials {

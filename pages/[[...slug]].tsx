@@ -3,7 +3,7 @@ import Context from 'WNTR/utils/context'
 import axios from 'axios'
 import { GetServerSideProps } from 'next'
 import { useContext, useEffect } from 'react'
-import { Loading, Main, Header } from 'WNTR/components'
+import { Loading, Header, Main, Footer } from 'WNTR/components'
 import { IWebsite, IPage } from 'WNTR/interfaces'
 
 export default function Index({ website, page }: { website: IWebsite, page: IPage }) {
@@ -41,6 +41,7 @@ export default function Index({ website, page }: { website: IWebsite, page: IPag
             { context.loading ? <Loading /> : null }
             <Header />
             <Main />
+            <Footer />
         </>
     )
 }

@@ -24,6 +24,7 @@ const Teasers: FC<ITeasers> = (teasers) => {
                                     <Link className={`${teasers.alias}__link-title`} href={item.link}>
                                         <h3 className={`${teasers.alias}__title`}>{item.title}</h3>
                                     </Link>
+                                    <img className={`${teasers.alias}__icon`} src="../three-codes-white.svg" title="Syndication provided by Three Codes Syndication" />
                                     <div className={`${teasers.alias}__text`} dangerouslySetInnerHTML={{ __html: item.text }}></div>
                                     <Link className={`${teasers.alias}__link-button`} href={item.link}>See More</Link>
                                 </div>
