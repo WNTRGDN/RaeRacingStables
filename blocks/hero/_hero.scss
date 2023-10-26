@@ -1,0 +1,51 @@
+.wntrHeroBlock {
+    font-family: var(--secondary-font);
+    font-weight: var(--seconary-font-weight-normal);
+    height: 95vh;
+    background-size: 50% auto, 100% auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: calc(var(--gutter) * 6);
+    &__container, &__row, &__col {
+        height: 100%
+    }
+    &__logo {
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        width: 50%;
+        @media (min-width: map-get($grid-breakpoints, "md")) {
+            width: 40%;
+        }
+        @media (min-width: map-get($grid-breakpoints, "lg")) {
+            width: 30%;
+        }
+        @media (min-width: map-get($grid-breakpoints, "xl")) {
+            width: 20%;
+        }
+    }
+    &__body {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+    &__content {
+        color: var(--white-color);
+        margin-top: auto;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: smaller;
+    }
+    &__sponsors {
+        display: flex;
+        justify-content: center;
+        padding-bottom: calc(var(--gutter) * 2);
+        img {
+            display: block;
+            height: 80px;
+            padding-left: var(--gutter);
+            padding-right: var(--gutter);
+        }
+    }
+}

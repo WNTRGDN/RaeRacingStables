@@ -1,0 +1,58 @@
+
+@import url('https://use.typekit.net/jon5izn.css');
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+:root {
+    --primary-color: rgb(125, 33, 43);
+    --white-color: rgb(255, 255, 255);
+    --dark-color: rgb(34, 34, 34);
+    --primary-font: 'rotunda-variable', sans-serif;
+    --primary-font-weight-variation-settings-normal: 'wght' 400;
+    --primary-font-weight-variation-settings-bold: 'wght' 700;
+    --secondary-font: 'athelas', serif;
+    --secondary-font-weight-normal: 400;
+    --secondary-font-weight-bold: 700;
+    --gutter: 15px;
+}
+
+// components
+@import '../components/loading/loading';
+@import '../components/header/header';
+
+// blocks
+@import '../blocks/hero/hero';
+@import '../blocks/heading/heading';
+@import '../blocks/text/text';
+
+html {
+    body {
+        font-family: var(--primary-font);
+        font-variation-settings: var(--primary-font-weight-variation--normal);
+    }
+}
+
+.sizeInd {
+    &::after {
+        content: "xs";
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        @media (min-width: map-get($grid-breakpoints, "sm")) {
+            content: "sm";
+        }
+        @media (min-width: map-get($grid-breakpoints, "md")) {
+            content: "md";
+        }
+        @media (min-width: map-get($grid-breakpoints, "lg")) {
+            content: "lg";
+        }
+        @media (min-width: map-get($grid-breakpoints, "xl")) {
+            content: "xl";
+        }
+        @media (min-width: map-get($grid-breakpoints, "xxl")) {
+            content: "xxl";
+        }
+    }
+}
