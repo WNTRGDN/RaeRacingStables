@@ -17,11 +17,11 @@ const Header: FC = () => {
     const handleShow = () => setShow(true)
     const handleScroll = () => window.scrollTo({ top: scrolling ? 0 : window.innerHeight, behavior: 'auto' })
     
-    if (typeof window !== 'undefined') {
-        useEffect(() => {
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
             window.onscroll = () => setScrolling(window.scrollY !== 0)
-        }, [window.scrollY])
-    }
+        }
+    }, [])
 
     let menu = website?.menus?.filter(m => m.title === "Main")[0]
 

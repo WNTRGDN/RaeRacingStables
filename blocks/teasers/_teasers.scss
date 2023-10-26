@@ -3,6 +3,11 @@
     padding-top: calc(var(--gutter) * 3);
     padding-bottom: calc(var(--gutter) * 3);
     font-family: var(--secondary-font);
+    @media (max-width: map-get($grid-breakpoints, "lg")) {
+        &__col {
+            margin-bottom: var(--gutter);
+        }
+    }
     &__teaser {
         border: 1px solid var(--white-color);
         padding: var(--gutter);

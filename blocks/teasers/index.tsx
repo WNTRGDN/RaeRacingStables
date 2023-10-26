@@ -15,7 +15,7 @@ const Teasers: FC<ITeasers> = (teasers) => {
                         </Col>
                     : null }
                     {teasers.pages.sort((a,b) => { return a.order - b.order }).map((item, index) =>
-                        <Col xs={12} sm={4} key={index}>
+                        <Col xs={12} lg={4} key={index} className={`${teasers.alias}__col`}>
                             {item.link ?
                                 <div className={`${teasers.alias}__teaser`}>
                                     <Link className={`${teasers.alias}__link-image`} href={item.link}>
