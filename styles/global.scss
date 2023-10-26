@@ -6,6 +6,7 @@
     --primary-color: rgb(125, 33, 43);
     --white-color: rgb(255, 255, 255);
     --dark-color: rgb(34, 34, 34);
+    --dark-color-alpha: rgba(34, 34, 34, 0.8);
     --primary-font: 'rotunda-variable', sans-serif;
     --primary-font-weight-variation-settings-normal: 'wght' 400;
     --primary-font-weight-variation-settings-bold: 'wght' 700;
@@ -15,14 +16,21 @@
     --gutter: 15px;
 }
 
+::-webkit-scrollbar { display: none; }
+
 // components
 @import '../components/loading/loading';
 @import '../components/header/header';
+@import '../components/main/main';
 
 // blocks
 @import '../blocks/hero/hero';
 @import '../blocks/heading/heading';
 @import '../blocks/text/text';
+@import '../blocks/cards/cards';
+@import '../blocks/image/image';
+@import '../blocks/split/split';
+@import '../blocks/teasers/teasers';
 
 html {
     body {

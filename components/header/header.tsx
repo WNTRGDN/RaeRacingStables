@@ -1,8 +1,7 @@
-import React, { FC, useState, useContext } from 'react'
+import React, { FC, useState, useContext, useEffect } from 'react'
 import Context from 'WNTR/utils/context'
 import { IMenu, ILink } from 'WNTR/interfaces'
 import { Container, Navbar, Offcanvas, Nav } from 'react-bootstrap'
-import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
 const component = {
@@ -10,17 +9,26 @@ const component = {
 }
 
 const Header: FC = () => {
-
+    
     const website = useContext(Context).website
     const [show, setShow] = useState(false)
+    const [scrolling, setScrolling] = useState(false)
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
+    const handleScroll = () => window.scrollTo({ top: scrolling ? 0 : window.innerHeight, behavior: 'auto' })
+    
+    if (typeof window !== 'undefined') {
+        useEffect(() => {
+            window.onscroll = () => setScrolling(window.scrollY !== 0)
+        }, [window.scrollY])
+    }
+
     let menu = website?.menus?.filter(m => m.title === "Main")[0]
 
     return (
         <header className={component.name}>
             {menu !== undefined ?
-                <Navbar expand="md" className={`${component.name}__navbar`} fixed="top">
+                <Navbar expand="md" className={`${component.name}__navbar ${scrolling ? 'scrolling' : 'top'}`} fixed="top">
                     <Container>
                         <Navbar.Brand className={`${component.name}__navbar d-sm-none`}></Navbar.Brand>
                         <Navbar.Toggle aria-controls={component.name} className="ms-auto" onClick={handleShow} />
@@ -33,6 +41,9 @@ const Header: FC = () => {
                     </Container>
                 </Navbar>
             : null}
+            <div className={`${component.name}__scroller`} onClick={handleScroll}>
+                <span className={`${component.name}__scroller-arrow ${component.name}__scroller-arrow-${scrolling ? 'up' : 'down'}`}></span>
+            </div>
         </header>
     )
 }
@@ -50,10 +61,11 @@ const Menu: FC<IMenu> = (menu) => {
 
 const NavigationLink: FC<ILink> = (link) => {
 
-    const pathname = usePathname()
+    const page = useContext(Context).page
+
     return (
         <Nav.Item className={`${component.name}__navigation-item`}>
-            <Nav.Link as={Link} scroll={true} href={link.url} className={`${pathname === link.url ? 'active' : null}`}>{link.title}</Nav.Link>
+            <Nav.Link as={Link} scroll={true} href={link.url} className={`${page.breadcrumbs[1]?.url === link.url ? 'active' : null}`}>{link.title}</Nav.Link>
         </Nav.Item>
     )
 }

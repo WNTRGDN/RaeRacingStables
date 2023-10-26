@@ -1,4 +1,16 @@
 .wntrHeaderComponent {
+    &__navbar {
+        background-color: transparent;
+        -webkit-transition: 0.3s background-color linear;
+        -moz-transition: 0.3s background-color linear;
+        -moz-transition: 0.3s background-color linear;
+        -ms-transition: 0.3s background-color linear;
+        -o-transition: 0.3s background-color linear;
+        transition: 0.3s background-color linear, 0.3s -webkit-filter linear;
+        &.scrolling {
+            background-color: var(--dark-color-alpha);
+        }
+    }
     &__navigation {
         width: 100%;
         @media (min-width: map-get($grid-breakpoints, "lg")) {
@@ -17,7 +29,6 @@
                 color: var(--primary-color);
                 @media (min-width: map-get($grid-breakpoints, "md")) {
                     color: var(--white-color);
-                    text-shadow: var(--dark-color) 0px 0px 5px;
                 }
                 &::after {
                     content: "";
@@ -40,6 +51,37 @@
                         width: 100%;
                     }
                 }
+            }
+        }
+    }
+    &__scroller {
+        height: calc(var(--gutter) * 4);
+        width: calc(var(--gutter) * 4);
+        background-color: var(--dark-color-alpha);
+        position: absolute;
+        bottom: calc(var(--gutter) * 2);
+        right: calc(var(--gutter) * 2);
+        cursor: pointer;
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:hover, &:focus {
+            background-color: var(--dark-color);
+        }
+        &-arrow {
+            border: solid var(--white-color);
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            padding: 3px;
+            transition: transform 1s ease;
+            &-up {
+                transform: rotate(-135deg);
+                -webkit-transform: rotate(-135deg);
+            }
+            &-down {
+                transform: rotate(45deg);
+                -webkit-transform: rotate(45deg);
             }
         }
     }

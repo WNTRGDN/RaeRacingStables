@@ -1,0 +1,53 @@
+.wntrSplitBlock {
+    overflow: scroll;
+    margin-bottom: calc(var(--gutter) * 2);
+    &__col {
+        background-color: var(--primary-color);
+        padding: 0;
+    }
+    .container-fluid {
+        padding: 0;
+    }
+    .wntrTextBlock {
+        position: relative;
+        color: var(--white-color);
+        width: 100%;
+        padding: calc(var(--gutter) * 2);
+        @media (min-width: map-get($grid-breakpoints, "xl")) {
+            padding: calc(var(--gutter) * 0.5);
+            > .container {
+                position: absolute;
+                transform: translate(0%, -50%);
+                top: 50%;
+                width: 80%;
+            }
+          }
+        h1, h2, h3, h4, h5 {
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+        a {
+            color: var(--white-color);
+            text-decoration: none;
+        }
+    }
+    .wntrImageBlock {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    // inverted
+    &-inverted {
+        .wntrSplitBlock {
+            &__col {
+                background-color: transparent;
+            }
+        }
+        .wntrTextBlock {
+            color: var(--primary-color);
+            a {
+                color: var(--primary-color);
+            }
+        }
+    }
+}
