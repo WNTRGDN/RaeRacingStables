@@ -11,8 +11,8 @@ export default function App({ Component, pageProps }: AppProps) {
     const router = useRouter()
     const [context, setContext] = useState({
       loading: false,
-      website: {},
-      page: {},
+      website: {} as IWebsite,
+      page: {} as IPage,
       setLoading,
       setWebsite,
       setPage
@@ -42,7 +42,7 @@ export default function App({ Component, pageProps }: AppProps) {
         return () => {
           router.events.off("routeChangeComplete", (url: URL) => Analytics.pageview(url, ''))
         }
-      }, [router.events])
+      }, [router.events, context])
 
     return (
         <Context.Provider value={context}>
