@@ -13,7 +13,7 @@ export default function Index({ website, page }: { website: IWebsite, page: IPag
     useEffect(() => {
         context.setWebsite(website)
         context.setPage(page)
-    }, [website, page, context])
+    }, [website, page])
 
     return(
         <>
