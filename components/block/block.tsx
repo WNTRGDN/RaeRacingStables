@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Hero, Heading, Text, Cards, Image, Split, Teasers } from 'WNTR/blocks'
+import { Hero, Heading, Text, Cards, Image, Split, Teasers, Figures, Form } from 'WNTR/blocks'
 import { IBlock } from 'WNTR/interfaces';
 
 var controls: { [key: string]: any } = {
@@ -9,7 +9,9 @@ var controls: { [key: string]: any } = {
     Cards: Cards,
     Image: Image,
     Split: Split,
-    Teasers: Teasers
+    Teasers: Teasers,
+    Figures: Figures,
+    Form: Form
 };
 
 const Block: FC<IBlock> = (block) => {

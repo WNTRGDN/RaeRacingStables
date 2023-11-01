@@ -2,8 +2,16 @@
     overflow-x: hidden;
     margin-bottom: calc(var(--gutter) * 2);
     &__col {
-        background-color: var(--primary-color);
         padding: 0;
+    }
+    &__row {
+        @media (min-width: map-get($grid-breakpoints, "xl")) {
+            [data-type="Image"] + [data-type="Text"]{
+                .wntrTextBlock {
+                    margin: 0 calc(var(--gutter) * 1.7) 0 var(--gutter);
+                }
+            }
+        }
     }
     .container-fluid {
         padding: 0;
@@ -13,18 +21,22 @@
         color: var(--white-color);
         width: 100%;
         padding: calc(var(--gutter) * 2);
+        border: 1px solid var(--white-color);
         @media (min-width: map-get($grid-breakpoints, "xl")) {
             padding: calc(var(--gutter) * 0.5);
+            margin: 0 var(--gutter) 0 c;
             > .container {
                 position: absolute;
-                transform: translate(0%, -50%);
+                transform: translate(10%, -50%);
                 top: 50%;
                 width: 80%;
             }
           }
         h1, h2, h3, h4, h5 {
+            font-family: var(--secondary-font);
+            font-weight: var(--seconary-font-weight-normal);
             letter-spacing: 2px;
-            margin-bottom: 30px;
+            margin-bottom: calc(var(--gutter) * 2);
         }
         a {
             color: var(--white-color);

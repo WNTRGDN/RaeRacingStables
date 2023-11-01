@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
-import { Container, Row, Col } from 'react-bootstrap';
+import { IBlock } from 'WNTR/interfaces'
+import { Container, Row, Col } from 'react-bootstrap'
 
 const Text: FC<IText> = (block) => {
     return (
@@ -13,10 +14,8 @@ const Text: FC<IText> = (block) => {
     )
 }
 
-interface IText {
-    richtext: string;
-    type: string;
-    alias: string;
+interface IText extends IBlock {
+    richtext: string
 }
 
 export default Text

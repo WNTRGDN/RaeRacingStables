@@ -1,8 +1,32 @@
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
 import Link from 'next/link'
+import Context from 'WNTR/utils/context'
+import { IBlock, ICrops } from 'WNTR/interfaces'
 import { Container, Row, Col, Image } from 'react-bootstrap'
 
 const Teasers: FC<ITeasers> = (teasers) => {
+
+    const xlFirst = [
+        { span: 12, offset: 0 },
+        { span: 4, offset: 4 },
+        { span: 4, offset: 2 },
+        { span: 4, offset: 0 }
+    ]
+
+    const xlOthers = [
+        { span: 12, offset: 0 },
+        { span: 4, offset: 0 },
+        { span: 4, offset: 0 },
+        { span: 4, offset: 0 }
+    ]
+
+    const md = [
+        { span: 12 },
+        { span: 12 },
+        { span: 6 },
+        { span: 4 }
+    ]
+
     return (
         <article className={teasers.alias}>
             <Container>
@@ -14,27 +38,9 @@ const Teasers: FC<ITeasers> = (teasers) => {
                             </h2>
                         </Col>
                     : null }
-                    {teasers.pages.sort((a,b) => { return a.order - b.order }).map((item, index) =>
-                        <Col xs={12} lg={4} key={index} className={`${teasers.alias}__col`}>
-                            {item.link ?
-                                <div className={`${teasers.alias}__teaser`}>
-                                    <Link className={`${teasers.alias}__link-image`} href={item.link}>
-                                        <Image className={`${teasers.alias}__image`} src={`${item.image}?mode=crop&width=500&height=500`} />
-                                    </Link>
-                                    <Link className={`${teasers.alias}__link-title`} href={item.link}>
-                                        <h3 className={`${teasers.alias}__title`}>{item.title}</h3>
-                                    </Link>
-                                    <img className={`${teasers.alias}__icon`} src="../three-codes-white.svg" title="Syndication provided by Three Codes Syndication" />
-                                    <div className={`${teasers.alias}__text`} dangerouslySetInnerHTML={{ __html: item.text }}></div>
-                                    <Link className={`${teasers.alias}__link-button`} href={item.link}>See More</Link>
-                                </div>
-                                 :
-                                <Row>
-                                    <Image className={`${teasers.alias}__image`} src={`${item.image}?mode=crop&width=500&height=500`} />
-                                    <h3 className={`${teasers.alias}__title`}>{item.title}</h3>
-                                    <div className={`${teasers.alias}__text`} dangerouslySetInnerHTML={{ __html: item.text }}></div>
-                                </Row>
-                            }
+                    {teasers.pages.sort((a,b) => { return a.order - b.order }).map((teaser, index) =>
+                        <Col xs={12} md={md[teasers.pages.length]} xl={!index ? xlFirst[teasers.pages.length] : xlOthers[teasers.pages.length]} key={index} className={`${teasers.alias}__col`}>
+                            <Teaser {...teaser} alias={teasers.alias} />
                         </Col>
                     )}
                 </Row>
@@ -43,19 +49,49 @@ const Teasers: FC<ITeasers> = (teasers) => {
     )
 }
 
-interface ITeasers {
-    heading: string;
-    pages: ITeaser[];
-    type: string;
-    alias: string;
+const Teaser: FC<ITeaser> = (teaser) => {
+
+    const link = teaser.link
+    const context = useContext(Context)
+    const image = teaser.image
+
+    return (
+        <div className={`${teaser.alias}__teaser`}>
+            { React.createElement(
+                link ? Link : 'div',
+                {
+                    className: `${teaser.alias}__link-image ${teaser.alias}__link-image--${image ? 'included' : 'without'}`,
+                    href: teaser.link
+                },
+                <Image className={`${teaser.alias}__image`} src={image ? teaser.crops.Thumbnail : `${context.page?.metaData.image}?mode=crop&width=500&height=500`} />
+            )}
+            { React.createElement(
+                link ? Link : 'div',
+                {
+                    className: `${teaser.alias}__link-title`,
+                    href: teaser.link
+                },
+                <h3 className={`${teaser.alias}__title`}>{teaser.title}</h3>
+            )}
+            <div className={`${teaser.alias}__text`} dangerouslySetInnerHTML={{ __html: teaser.text }}></div>
+            { link ? <Link className={`${teaser.alias}__link-button`} href={teaser.link}>See More</Link> : null }
+        </div>
+    )
+}
+
+interface ITeasers extends IBlock {
+    heading: string,
+    pages: ITeaser[]
 }
 
 interface ITeaser {
-    image: string;
-    link: string;
-    text: string;
-    title: string;
-    order: number;
+    alias: string,
+    image: string,
+    link: string,
+    text: string,
+    title: string,
+    crops: ICrops,
+    order: number
 }
 
 export default Teasers

@@ -11,10 +11,12 @@ export interface IWebsite {
     updateDate: Date;
 }
 
-export interface IForm {
+export interface IForm extends IBlock {
     id: string,
     name: string,
+    allFields: IField[],
     fields: IField[],
+    containers: IContainer[],
     messageOnSubmit: string,
     nextLabel: string,
     prevLabel: string,
@@ -22,8 +24,30 @@ export interface IForm {
     fieldTypes: Record<string, string>
 }
 
+export interface IContainer {
+    caption: string,
+    id: string,
+    rows: IRow[],
+    sortOrder: number
+}
+
+export interface IRow {
+    caption: string,
+    cols: ICol[],
+    condition: string,
+    id: string,
+    sortOrder: number
+}
+
+export interface ICol {
+    caption: string,
+    fields: IField[],
+    width: number
+}
+
 export interface IField {
     alias: string,
+    blockAlias: string,
     allowMultipleFileUploads: boolean,
     allowedUploadTypes: object,
     caption: string,
@@ -35,10 +59,16 @@ export interface IField {
     invalidErrorMessage: string,
     mandatory: boolean,
     placeholder: string,
+    preValues: IPrevalue[],
     regEx: string,
     requiredErrorMessage: string,
     settings: IFormFieldSettings,
     submitting: boolean
+}
+
+export interface IPrevalue {
+    caption: string,
+    value: string
 }
 
 export interface IFormFieldSettings {
@@ -49,6 +79,14 @@ export interface IFormFieldSettings {
     numberOfRows: number,
     placeholder: string,
     showLabel: string
+}
+
+export interface IHTMLFormElement extends HTMLFormElement {
+    readonly elements: IHTMLFormControlsCollection;
+}
+
+interface IHTMLFormControlsCollection extends HTMLFormControlsCollection {
+    [key: string]: HTMLInputElement | any;
 }
 
 export interface ISocials {
@@ -63,6 +101,12 @@ export interface IRoute {
 
 export interface IParams {
     slug: string[];
+}
+
+export interface ICrops {
+    Hero: string,
+    Thumbnail: string,
+    Banner: string
 }
 
 export interface IPage {

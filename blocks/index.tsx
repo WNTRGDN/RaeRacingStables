@@ -5,6 +5,8 @@ import Cards from "./cards/cards"
 import Image from "./image/image"
 import Split from "./split/split"
 import Teasers from "./teasers/teasers"
+import Figures from "./figures/figures"
+import Form from "./form/form"
 
 export {
     Hero,
@@ -13,5 +15,7 @@ export {
     Cards,
     Image,
     Split,
-    Teasers
+    Teasers,
+    Figures,
+    Form
 }

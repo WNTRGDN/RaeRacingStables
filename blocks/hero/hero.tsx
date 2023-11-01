@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { IBlock } from 'WNTR/interfaces'
 import { Container, Row, Col } from 'react-bootstrap'
 
 const Hero: FC<IHero> = (block) => {
@@ -24,9 +25,7 @@ const Hero: FC<IHero> = (block) => {
     )
 }
 
-interface IHero {
-    type: string,
-    alias: string,
+interface IHero extends IBlock {
     logo: string,
     background: string,
     content: string

@@ -1,6 +1,6 @@
 .wntrTextBlock {
     background-color: var(--dark-color);
-    padding: calc(var(--gutter) * 6) 0;
+    margin: calc(var(--gutter) * 6) 0;
     color: var(--white-color);
     a {
         color: var(--white-color);
@@ -9,8 +9,5 @@
     h3 {
         text-transform: uppercase;
         letter-spacing: 2px;
-    }
-    p:last-child {
-        margin-bottom: 0;
     }
 }

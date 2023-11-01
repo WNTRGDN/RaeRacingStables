@@ -1,0 +1,64 @@
+.wntrFormBlock {
+    display: flex;
+    flex-direction: column;
+    margin-top: calc(var(--gutter) * 6);
+    margin-bottom: calc(var(--gutter) * 6);
+    h2, h3, h4 {
+        font-family: var(--secondary-font);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: var(--white-color);
+    }
+    h2 {
+        margin-bottom: calc(var(--gutter) * 2);
+        text-align: center;
+    }
+    h3, h4 {
+        margin-bottom: var(--gutter);
+        text-align: center;
+        font-size: smaller;
+    }
+    &__field {
+        margin-bottom: calc(var(--gutter)*1.5);
+        input, textarea, select {
+            border-radius: 0;
+            background-color: var(--white-color-alpha);
+            border: 1px solid var(--white-color);
+            color: var(--white-color);
+            &:focus {
+                box-shadow: none;
+                border-color: var(--white-color);
+            }
+            &:disabled {
+                background-color: var(--white-color-alpha);
+            }
+        }
+    }
+    &__button {
+        margin-top: auto;
+        border: 1px solid var(--white-color);
+        color: var(--white-color);
+        font-family: var(--secondary-font);
+        text-transform: uppercase;
+        background-color: transparent;
+        border-radius: 0;
+        margin-left: auto;
+        display: block;
+        letter-spacing: 2px;
+        border: none;
+        transform: translate(0, 0);
+        -webkit-transition: 0.1s transform linear;
+        -moz-transition: 0.1s transform linear;
+        -moz-transition: 0.1s transform linear;
+        -ms-transition: 0.1s transform linear;
+        -o-transition: 0.1s transform linear;
+        transition: 0.1s transform linear, 0.1s -webkit-filter linear;
+        &:disabled {
+            background-color: transparent;
+        }
+        &:hover, &:focus {
+            background-color: transparent;
+            transform: translate(calc(var(--gutter)/3), 0);
+        }
+    }
+}

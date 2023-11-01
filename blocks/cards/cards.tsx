@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import Link from 'next/link'
 import { Container, Row, Col, Image } from 'react-bootstrap'
+import { IBlock, ICrops } from 'WNTR/interfaces'
 
 const Cards: FC<ICards> = (cards) => {
     return (
@@ -20,12 +21,12 @@ const Cards: FC<ICards> = (cards) => {
                                 <Link className={`${cards.alias}__card`} href={item.link} data-content={item.text}>
                                     <h3 className={`${cards.alias}__title`}>{item.title}</h3>
                                     <p className={`${cards.alias}__text visually-hidden`}>{item.text}</p>
-                                    <Image className={`${cards.alias}__image`} src={`${item.image}?mode=crop&width=500&height=500`} />
+                                    <Image className={`${cards.alias}__image`} src={item.crops.Thumbnail} />
                                 </Link> :
                                 <div className={`${cards.alias}__card`} data-content={item.text}>
                                     <h3 className={`${cards.alias}__title`}>{item.title}</h3>
                                     <p className={`${cards.alias}__text visually-hidden`}>{item.text}</p>
-                                    <Image className={`${cards.alias}__image`} src={`${item.image}?mode=crop&width=500&height=500`} />
+                                    <Image className={`${cards.alias}__image`} src={item.crops.Thumbnail} />
                                 </div>
                             }
                         </Col>
@@ -36,18 +37,17 @@ const Cards: FC<ICards> = (cards) => {
     )
 }
 
-interface ICards {
-    heading: string;
-    items: ICard[];
-    type: string;
-    alias: string;
+interface ICards extends IBlock {
+    heading: string,
+    items: ICard[]
 }
 
 interface ICard {
-    image: string;
-    link: string;
-    text: string;
-    title: string;
+    image: string,
+    link: string,
+    text: string,
+    title: string,
+    crops: ICrops
 }
 
 export default Cards

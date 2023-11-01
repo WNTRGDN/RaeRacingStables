@@ -1,7 +1,7 @@
 .wntrTeasersBlock {
     color: var(--white-color);
-    padding-top: calc(var(--gutter) * 3);
-    padding-bottom: calc(var(--gutter) * 3);
+    margin-top: calc(var(--gutter) * 6);
+    margin-bottom: calc(var(--gutter) * 6);
     font-family: var(--secondary-font);
     @media (max-width: map-get($grid-breakpoints, "lg")) {
         &__col {
@@ -32,6 +32,19 @@
             margin-bottom: calc(var(--gutter) * 2);
             position: relative;
             display: block;
+            &--without {
+                &::after {
+                    content: "Coming Soon";
+                    position: absolute;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    padding: calc(var(--gutter) * 2);
+                    color: var(--white-color);
+                    text-align: center;
+                    font-family: var(--primary-font);
+                    left: 50%;
+                }
+            }
         }
         &-title {
             text-decoration: none;
@@ -77,11 +90,10 @@
     }
     &__text {
         font-family: var(--primary-font);
-        text-align: center;
         padding-bottom: calc(var(--gutter) * 2);
         p {
             strong {
-                font-variation-settings: var(--wntr-font-rotunda-medium);
+                font-variation-settings: var(--wntr-font-rotunda-bold);
             }
         }
     }

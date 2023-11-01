@@ -1,6 +1,7 @@
 import React, { FC, useContext } from 'react'
+import { IBlock } from 'WNTR/interfaces'
 import Context from 'WNTR/utils/context'
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap'
 
 const Heading: FC<IHeading> = (block) => {
     const context = useContext(Context)
@@ -17,11 +18,9 @@ const Heading: FC<IHeading> = (block) => {
     )
 }
 
-interface IHeading {
+interface IHeading extends IBlock {
     text: string;
     size: string;
-    type: string;
-    alias: string;
 }
 
 export default Heading

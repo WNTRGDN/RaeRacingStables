@@ -13,9 +13,7 @@ const Form: FC = () => {
 
     const form = useContext(Context).website?.form as IForm
     type FieldTypes = Record<string, string>
-
-    console.log(form)
-
+    
     const [submitted, setSubmitted] = useState(false)
     const [submitting, setSubmitting] = useState(false)
     const fieldTypes: FieldTypes = form?.fieldTypes

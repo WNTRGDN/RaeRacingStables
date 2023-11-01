@@ -3,7 +3,6 @@ import Context from 'WNTR/utils/context'
 import { Form } from 'WNTR/components'
 import { Container, Row, Col } from 'react-bootstrap'
 import Link from 'next/link'
-import Image from 'next/image'
 
 const component = {
     name: 'wntrFooterComponent'
@@ -41,14 +40,16 @@ const Footer: FC = () => {
                             {associations?.links?.map((link, index) => <Link key={index} href={link.url}>{link.title}</Link> )}
                         </menu>
                     </Col>
-                    <Col xs={12} lg={2} xl={2}>
-                        <h4>Socials</h4>
-                        <menu className={`${component.name}__menu ${component.name}__menu-social`}>
-                            <Link href="/" title="Link us on Facebook"><img src="../facebook.svg" /></Link>
-                            <Link href="/" title="Follow us on Instagram"><img src="../instagram.svg" /></Link>
-                            <Link href="/" title="Check out Three Codes Syndication"><img src="../threecodes.svg" /></Link>
-                        </menu>
-                    </Col>
+                    { website.socials ?
+                        <Col xs={12} lg={2} xl={2}>
+                            <h4>Socials</h4>
+                            <menu className={`${component.name}__menu ${component.name}__menu-social`}>
+                                { website.socials.facebook ? <Link href={`${website.socials.facebook}`} title="Link us on Facebook" target="_blank"><img src="../../facebook.svg" /></Link> : null }
+                                { website.socials.instagram ? <Link href={`${website.socials.instagram}`}  title="Follow us on Instagram" target="_blank"><img src="../../instagram.svg" /></Link> : null }
+                                <Link href="https://www.instagram.com/threecodessyndication/" title="Check out Three Codes Syndication" target="_blank"><img src="../../threecodes.svg" /></Link>
+                            </menu>
+                        </Col>
+                    : null }
                     <Col xs={12} xl={6}>
                         <h4>Contact</h4>
                         <Form />
