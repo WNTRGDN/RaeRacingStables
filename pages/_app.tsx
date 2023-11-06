@@ -1,5 +1,5 @@
 import 'WNTR/styles/global.scss'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext, use } from 'react'
 import { useRouter } from 'next/router'
 import type { AppProps } from 'next/app'
 import Context from 'WNTR/utils/context'
@@ -8,6 +8,7 @@ import { IPage, IWebsite } from 'WNTR/interfaces'
 
 export default function App({ Component, pageProps }: AppProps) {
     
+    const currentContext = useContext(Context)
     const router = useRouter()
     const [context, setContext] = useState({
       loading: false,
@@ -35,12 +36,12 @@ export default function App({ Component, pageProps }: AppProps) {
     
     useEffect(() => {
 
-        router.events.on("routeChangeComplete", (url: URL) => Analytics.pageview(url, ''))
+        router.events.on("routeChangeComplete", (url: URL) => Analytics.pageview(url, currentContext?.website?.gA4))
         router.events.on("routeChangeStart", () => context.setLoading(true))
         router.events.on("routeChangeComplete", () => context.setLoading(false))
 
         return () => {
-          router.events.off("routeChangeComplete", (url: URL) => Analytics.pageview(url, ''))
+          router.events.off("routeChangeComplete", (url: URL) => Analytics.pageview(url, currentContext?.website?.gA4))
         }
       }, [router.events, context])
 

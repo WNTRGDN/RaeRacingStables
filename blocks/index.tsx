@@ -7,6 +7,7 @@ import Split from "./split/split"
 import Teasers from "./teasers/teasers"
 import Figures from "./figures/figures"
 import Form from "./form/form"
+import Breadcrumbs from "./breadcrumbs/breadcrumbs"
 
 export {
     Hero,
@@ -17,5 +18,6 @@ export {
     Split,
     Teasers,
     Figures,
-    Form
+    Form,
+    Breadcrumbs
 }

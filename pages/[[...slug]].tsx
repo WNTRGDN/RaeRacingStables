@@ -7,9 +7,8 @@ import { Loading, Header, Main, Footer } from 'WNTR/components'
 import { IWebsite, IPage } from 'WNTR/interfaces'
 
 export default function Index({ website, page }: { website: IWebsite, page: IPage }) {
-
+    
     const context = useContext(Context)
-
     useEffect(() => {
         context.setWebsite(website)
         context.setPage(page)
@@ -28,16 +27,17 @@ export default function Index({ website, page }: { website: IWebsite, page: IPag
                 <meta property="og:url" content={page.url} />
                 <meta property="og:image" content={`${page.metaData.image}?mode=crop&width=500&height=500`} />
                 <meta name="site_name" property="og:site_name" content={website.name} />
-                <meta name="twitter:site" content="RaeWilliamsRacing" />
-                <meta name="twitter:site:id" content="RaeWilliamsRacing" />
+                <meta name="twitter:site" content="RaeRacingStables" />
+                <meta name="twitter:site:id" content="RaeRacingStables" />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:title" content={page.metaData.title ?? page.name + ' | ' + website.name} />
                 <meta name="twitter:description" content={page.metaData.description} />
                 <meta name="twitter:image" content={`${page.metaData.image}?mode=crop&width=500&height=500`} />
                 <meta name="environment" content={process.env.NEXT_PUBLIC_VERCEL_ENV} />
+                {process.env.NEXT_PUBLIC_VERCEL_ENV !== 'production' ? <meta name="robots" content="noindex,follow" /> : null }
                 <link rel="canonical" href={page.url}></link>
             </Head>
-            <div className="sizeInd" />
+            { process.env.NEXT_PUBLIC_VERCEL_ENV !== 'production' ? <div className="sizeInd" /> : null }
             { context.loading ? <Loading /> : null }
             <Header />
             <Main />
