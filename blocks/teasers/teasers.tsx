@@ -63,7 +63,7 @@ const Teaser: FC<ITeaser> = (teaser) => {
                     className: `${teaser.alias}__link-image ${teaser.alias}__link-image--${image ? 'included' : 'without'}`,
                     href: teaser.link
                 },
-                <Image className={`${teaser.alias}__image`} src={image ? teaser.crops.Thumbnail : `${context.page?.metaData.image}?mode=crop&width=500&height=500`} />
+                <Image className={`${teaser.alias}__image`} src={image ? `${teaser.image}?mode=crop&width=500&height=400` : `${context.page?.metaData.image}?mode=crop&width=500&height=400`} />
             )}
             { React.createElement(
                 link ? Link : 'div',

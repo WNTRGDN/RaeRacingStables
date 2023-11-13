@@ -22,6 +22,8 @@
         width: 100%;
         padding: calc(var(--gutter) * 2);
         border: 1px solid var(--white-color);
+        height: 100%;
+        margin-top: 0;
         @media (min-width: map-get($grid-breakpoints, "xl")) {
             padding: calc(var(--gutter) * 0.5);
             margin: 0 var(--gutter) 0 c;

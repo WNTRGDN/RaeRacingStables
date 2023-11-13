@@ -16,7 +16,7 @@ function generateSiteMap(urls: IUrl[]) {
           <changefreq>${url.changefreq}</changefreq>
           <priority>${url.priority}</priority>
         </url>
-      `)}
+      `).join('')}
     </urlset>
   `)
 }
