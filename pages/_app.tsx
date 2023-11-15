@@ -36,12 +36,12 @@ export default function App({ Component, pageProps }: AppProps) {
     
     useEffect(() => {
 
-        router.events.on("routeChangeComplete", (url: URL) => Analytics.pageview(url, currentContext?.website?.gA4))
+        router.events.on("routeChangeComplete", (url: URL) => Analytics.pageview(url))
         router.events.on("routeChangeStart", () => context.setLoading(true))
         router.events.on("routeChangeComplete", () => context.setLoading(false))
 
         return () => {
-          router.events.off("routeChangeComplete", (url: URL) => Analytics.pageview(url, currentContext?.website?.gA4))
+          router.events.off("routeChangeComplete", (url: URL) => Analytics.pageview(url))
         }
       }, [router.events, context])
 
