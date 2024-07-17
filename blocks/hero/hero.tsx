@@ -14,7 +14,6 @@ const Hero: FC<IHero> = (block) => {
                                 <div dangerouslySetInnerHTML={{ __html: block.content }}></div>
                                 <div className={`${block.alias}__sponsors`}>
                                     <img src="./three-codes-white.svg" />
-                                    <img src="./kwilliams.svg" />
                                 </div>
                             </div>
                         </div>
