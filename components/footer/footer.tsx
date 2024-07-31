@@ -55,7 +55,7 @@ const Footer: FC = () => {
                         <Form />
                     </Col>
                     <Col xs={12}>
-                        <small className={`${component.name}__copyright`}>&copy; 2023 {website?.name} Ltd.</small>
+                        <small className={`${component.name}__copyright`}>&copy; {(new Date().getFullYear())} {website?.name}</small>
                     </Col>
                 </Row>
             </Container>
