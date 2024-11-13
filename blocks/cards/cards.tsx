@@ -16,7 +16,7 @@ const Cards: FC<ICards> = (cards) => {
                         </Col>
                     : null }
                     {cards.items.map((item, index) =>
-                        <Col xs={6} xl={{ span: 5, offset: index ? 0 : 1 }} xxl={{ span: 4, offset: index ? 0 : 2 }} key={index}>
+                        <Col xs={12} xl={{ span: 5, offset: index ? 0 : 1 }} xxl={{ span: 4, offset: index ? 0 : 2 }} key={index}>
                             {item.link ?
                                 <Link className={`${cards.alias}__card`} href={item.link} data-content={item.text}>
                                     <h3 className={`${cards.alias}__title`}>{item.title}</h3>
