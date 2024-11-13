@@ -41,7 +41,6 @@ export default function Index({ website, page }: { website: IWebsite, page: IPag
                 {process.env.NEXT_PUBLIC_VERCEL_ENV !== 'production' ? <meta name="robots" content="noindex,follow" /> : null }
                 <link rel="canonical" href={page.url}></link>
             </Head>
-            { process.env.NEXT_PUBLIC_VERCEL_ENV !== 'production' ? <div className="sizeInd" /> : null }
             { context.loading ? <Loading /> : null }
             <Header />
             <Main />
